@@ -1,7 +1,7 @@
 
 # 🌤️ Weather App
 
-A fully responsive weather application built using **React.js** and **OpenWeatherMap API**. It allows users to search for current weather conditions in any city, including temperature, humidity, wind speed, visibility, and air pressure.
+A weather application built using **React.js** and **OpenWeatherMap API**. It allows users to search for current weather conditions in any city, including temperature, humidity, wind speed, visibility, and air pressure.
 
 ## 🚀 Features
 
