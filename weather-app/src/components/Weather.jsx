@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "./Weather.css";
 import searchicon from '../assets/search.png';
 import clearicon from '../assets/clear.png';
@@ -8,10 +8,11 @@ import cloudicon from '../assets/cloud.png';
 import rainicon from '../assets/rain.png';
 import drizzleicon from '../assets/drizzle.png';
 import snowicon from '../assets/snow.png';
+import visibilityicon from '../assets/visibility.png';
+import pressureicon from '../assets/pressure.png';
 
 const Weather = () => {
-    const inputRef = useRef()
-
+  const inputRef = useRef();
 
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState('');
@@ -51,6 +52,8 @@ const Weather = () => {
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
         weatherIcon: icon,
+        visibility: data.visibility, 
+        pressure: data.main.pressure 
       });
     } catch (error) {
       console.error(error);
@@ -59,7 +62,7 @@ const Weather = () => {
   }, []);
 
   useEffect(() => {
-    search('chennai'); // Default city
+    search('chennai'); 
   }, [search]);
 
   const handleInputChange = (e) => setCity(e.target.value);
@@ -72,7 +75,7 @@ const Weather = () => {
     <div className='weather'>
       <div className='search-bar'>
         <input
-        ref={inputRef}
+          ref={inputRef}
           type='text'
           placeholder='Search'
           value={city}
@@ -105,6 +108,20 @@ const Weather = () => {
               <div>
                 <p className='data-title'>Wind Speed</p>
                 <p className='data-value'>{weather.windSpeed} km/h</p>
+              </div>
+            </div>
+            <div className="col">
+              <img src={visibilityicon} alt='visibility-icon'className='visibility-icon' />
+              <div>
+                <p className='data-title'>Visibility</p>
+                <p className='data-value'>{weather.visibility / 1000} km</p>
+              </div>
+            </div>
+            <div className="col">
+                <img src={pressureicon} alt='pressure-icon' className='pressure-icon' />
+              <div>
+                <p className='data-title'>Air Pressure</p>
+                <p className='data-value'>{weather.pressure} hPa</p>
               </div>
             </div>
           </div>
